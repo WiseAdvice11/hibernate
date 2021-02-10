@@ -1,10 +1,26 @@
-package entity;
+package hibernateTest2.entity;
 
 import javax.persistence.*;
 
 @Entity
 @Table (name = "employees")
 public class Employee {
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
+    public void setDepartment(String department) {
+        this.department = department;
+    }
+
+    public void setSalary(int salary) {
+        this.salary = salary;
+    }
+
     @Override
     public String toString() {
         return "Employee{" +
@@ -21,8 +37,25 @@ public class Employee {
     private int id;
 
     private String name;
-
+    private String department;
+    private int salary;
     private String surname;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "details_id")
+    private Detail empDetail;
+
+    public Detail getEmpDetail() {
+        return empDetail;
+    }
+
+    public void setEmpDetail(Detail empDetail) {
+        this.empDetail = empDetail;
+    }
+
+    public Employee(Detail empDetail) {
+        this.empDetail = empDetail;
+    }
 
     public int getId() {
         return id;
@@ -54,8 +87,6 @@ public class Employee {
     public Employee() {
     }
 
-    private String department;
 
-    private int salary;
 
 }

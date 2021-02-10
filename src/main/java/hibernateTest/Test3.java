@@ -1,4 +1,6 @@
-import entity.Employee;
+package hibernateTest;
+
+import hibernateTest.entity.Employee;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -23,8 +25,11 @@ public class Test3 {
         session = factory.getCurrentSession();
         session.beginTransaction();
 
-        List<Employee> employees = session.createQuery("from Employee") // HQL Указывается имя класса
+        List<Employee> employees = session.createQuery("FROM Employee" + " WHERE name = 'Варвара'") // HQL  Find by name
                 .getResultList();
+
+//        List<Employee> employees = session.createQuery("from Employee") // HQL Указывается имя класса
+//                .getResultList();
 
         for (Employee e: employees){
             System.out.println(e);
