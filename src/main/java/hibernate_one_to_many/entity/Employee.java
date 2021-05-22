@@ -5,19 +5,6 @@ import javax.persistence.*;
 @Entity
 @Table (name = "employees")
 public class Employee {
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setSurname(String surname) {
-        this.surname = surname;
-    }
-
-
-
-    public void setSalary(int salary) {
-        this.salary = salary;
-    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -45,11 +32,9 @@ public class Employee {
 
     public Employee(String name, String surname, int salary) {
         this.name = name;
-
         this.surname = surname;
         this.salary = salary;
     }
-
 
     public Department getDepartment() {
         return department;
@@ -58,4 +43,17 @@ public class Employee {
     public void setDepartment(Department department) {
         this.department = department;
     }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
+    public void setSalary(int salary) {
+        this.salary = salary;
+    }
+
 }

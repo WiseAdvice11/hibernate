@@ -18,14 +18,13 @@ public class Department {
     @Column(name = "max_salary")
     private  int maxSalary;
 
-    @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.DETACH,CascadeType.MERGE,CascadeType.REFRESH},mappedBy = "department")
+    @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.DETACH,CascadeType.MERGE,CascadeType.REFRESH}
+    ,mappedBy = "department")// Указываем поле в дочернем классе по которому будет мапить в бд.
     private List<Employee> employees = new ArrayList<>();
 
     public void addEmployeeToDepartment(Employee employee){
         employees.add(employee);
         employee.setDepartment(this);
-
-
     }
 
     public List<Employee> getEmployees() {

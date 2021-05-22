@@ -7,9 +7,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
-import java.util.Arrays;
-import java.util.HashSet;
-        import java.util.Set;
+import java.util.*;
 
 public class Main {
 
@@ -45,7 +43,11 @@ public class Main {
         finally {
             session.close();
             factory.close();
+
+            List l = new ArrayList<>();
+//            remove      как работает метод ?
         }
+
     }
 }
 
